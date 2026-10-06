@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Login • Bestie Forever{% endblock %}
+{% block body %}
+<main class="login-shell">
+  <div class="login-card glass">
+    <div class="login-photo">
+      <img src="{{ url_for('static', filename='images/memory_01.png') }}" alt="Afreen memory">
+      <div class="photo-overlay"></div>
+      <div class="login-brand">♥ <span>Bestie Forever</span></div>
+      <p>A special birthday surprise for my best friend</p>
+    </div>
+    <div class="login-panel">
+      <div class="mini-heart">♥</div>
+      <h1>Welcome Back</h1>
+      <p class="muted">A private little world made for Afreen.</p>
+      {% if error %}<div class="error">{{ error }}</div>{% endif %}
+      <form method="POST" class="login-form">
+        <label>Username</label>
+        <div class="input-wrap"><span>♟</span><input name="username" placeholder="Username" autocomplete="username" required></div>
+        <label>Password</label>
+        <div class="input-wrap"><span>●</span><input name="password" type="password" placeholder="Password" autocomplete="current-password" required></div>
+        <button class="primary-btn" type="submit">Unlock Our Memories <span>→</span></button>
+      </form>
+      <div class="login-note">Some friendships are written in the stars… ♡</div>
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,10 @@
+<nav class="navbar glass">
+  <a class="brand" href="{{ url_for('page', page_no=0) }}"><span class="brand-heart">♥</span><span>Bestie <b>Forever</b></span></a>
+  <div class="nav-links">
+    <a class="{{ 'active' if page_no==0 else '' }}" href="{{ url_for('page', page_no=0) }}">Home</a>
+    {% for n in range(1,8) %}
+      <a class="{{ 'active' if page_no==n else '' }}" href="{{ url_for('page', page_no=n) }}">Page {{ n }}</a>
+    {% endfor %}
+  </div>
+  <div class="nav-right"><span class="avatar">S</span><span class="desktop-user">Shahid</span><a href="{{ url_for('logout') }}" class="logout">↪</a><button class="menu-btn" aria-label="Menu">☰</button></div>
+</nav>

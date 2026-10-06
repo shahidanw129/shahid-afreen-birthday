@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}Happy Birthday Afreen • Shahid × Afreen{% endblock %}
+{% block body %}
+<div class="app-shell">
+  {% include "navbar.html" %}
+
+  <main class="hero home-hero">
+    <div class="hero-copy reveal">
+      <div class="eyebrow">A SPECIAL BIRTHDAY SURPRISE • DECEMBER 2024 → FOREVER</div>
+      <h1>Happy Birthday<br><em>Afreen</em> <span>♥</span></h1>
+      <p class="lead">Dear Afreen, this little website is made especially for you — not because one page can explain a friendship, but because sometimes you need a whole collection of memories to say what a simple “Happy Birthday” cannot.</p>
+      <p class="hero-wish">From a Snapchat add in December 2024 to all the conversations, random pictures, laughs and little memories that followed — thank you for becoming such a beautiful part of my story.</p>
+      <div class="hero-actions">
+        <a class="primary-btn" href="{{ url_for('page', page_no=1) }}">Open Our Story <span>→</span></a>
+        <a class="ghost-btn" href="{{ url_for('page', page_no=6) }}">Read My Birthday Letter ♥</a>
+      </div>
+    </div>
+    <div class="hero-art reveal delay-1">
+      <div class="portrait-frame">
+        <img src="{{ url_for('static', filename='images/memory_03.png') }}" alt="Afreen">
+        <div class="frame-glow"></div>
+        <div class="portrait-caption">For Afreen • With bestie love</div>
+      </div>
+      <div class="floating-note note-a">December 2024<br><small>Where our story started</small></div>
+      <div class="floating-note note-b">41 memories<br><small>One unforgettable friendship</small></div>
+    </div>
+  </main>
+
+  <section class="stats glass">
+    <div><b>2</b><span>Best Friends</span></div>
+    <div><b>Dec ’24</b><span>Our Beginning</span></div>
+    <div><b>41</b><span>Photo Memories</span></div>
+    <div><b>∞</b><span>Reasons to Smile</span></div>
+  </section>
+
+  <section class="birthday-wish-grid">
+    <article class="wish-panel glass reveal">
+      <span class="section-kicker">A NOTE FROM SHAHID</span>
+      <h2>Afreen, you deserve a beautiful year.</h2>
+      <p>May every morning bring you a new reason to be hopeful, every difficult day make you stronger, and every happy moment remind you how special you are.</p>
+      <p>May your dreams become plans, your plans become achievements, and your achievements become memories you will be proud to tell someday.</p>
+      <p>And whenever life feels too serious, I hope there is always enough laughter, enough friendship and enough random nonsense to make everything feel lighter again.</p>
+      <div class="signature">— Shahid ♥</div>
+    </article>
+    <article class="wish-panel glass reveal delay-1">
+      <span class="section-kicker">OUR LITTLE TIMELINE</span>
+      <div class="big-year">2024 → ∞</div>
+      <div class="timeline-list">
+        <div><span>01</span><b>Snapchat Add</b><small>December 2024 — the tiny beginning</small></div>
+        <div><span>02</span><b>More Conversations</b><small>Random talks slowly became familiar</small></div>
+        <div><span>03</span><b>More Memories</b><small>Photos, laughs, jokes and moments</small></div>
+        <div><span>04</span><b>Bestie Era</b><small>A friendship worth celebrating</small></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="home-message reveal">
+    <div class="quote-mark">“</div>
+    <h2>Some people enter your life quietly,<br>then become a beautiful part of your story.</h2>
+    <p>SHAHID × AFREEN • BEST FRIENDS FOREVER</p>
+  </section>
+
+  <section class="final-home glass reveal">
+    <div>
+      <span class="section-kicker">ONE LAST WISH</span>
+      <h2>Happy Birthday, Afreen. ♥</h2>
+      <p>May this birthday be the beginning of your happiest chapter yet. Keep your smile, protect your peace, chase your dreams and never forget how many beautiful memories are still waiting for you.</p>
+    </div>
+    <a class="primary-btn" href="{{ url_for('page', page_no=1) }}">Start the 7-Page Journey →</a>
+  </section>
+</div>
+{% endblock %}

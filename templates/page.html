@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block title %}{{ data.title }} • Shahid × Afreen{% endblock %}
+{% block body %}
+<div class="app-shell">
+  {% include "navbar.html" %}
+
+  <main class="page-main">
+    <header class="page-heading reveal">
+      <div class="eyebrow">{{ data.eyebrow }}</div>
+      <h1>{{ data.heading }} <span>♡</span></h1>
+      <p>{{ data.intro }}</p>
+      <div class="chapter-badge">CHAPTER {{ page_no }} <i>•</i> 6 SPECIAL MEMORIES <i>•</i> WRITTEN FOR AFREEN</div>
+    </header>
+
+    <section class="memory-grid">
+      {% for img in data.images %}
+      {% set caption = data.captions[loop.index0] %}
+      {% set wish = wishes[loop.index0] if loop.index0 < wishes|length else "Happy Birthday, Afreen. May this memory always bring a smile to your face." %}
+      <article class="memory-card advanced-card reveal" style="--delay: {{ loop.index0 * 70 }}ms">
+        <div class="memory-image">
+          <img src="{{ url_for('static', filename='images/memory_%02d.png'|format(img)) }}" alt="{{ caption }}" loading="lazy">
+          <div class="image-shade"></div>
+          <div class="photo-tag">MEMORY {{ "%02d"|format(loop.index) }}</div>
+          <button class="zoom-btn" data-src="{{ url_for('static', filename='images/memory_%02d.png'|format(img)) }}" aria-label="Open photo">⤢</button>
+        </div>
+        <div class="memory-info">
+          <div class="memory-title-row">
+            <span class="number">{{ "%02d"|format(loop.index) }}</span>
+            <h3>{{ caption }}</h3>
+          </div>
+          <p>{{ wish }}</p>
+          <div class="memory-sign">— Shahid ♥ Afreen</div>
+        </div>
+      </article>
+      {% endfor %}
+    </section>
+
+    <section class="wish-banner glass reveal">
+      <div class="wish-icon">♥</div>
+      <div>
+        <div class="eyebrow">A MESSAGE FOR YOU</div>
+        <h2>Afreen, your happiness is always worth celebrating.</h2>
+        <p>May your smile stay bright, your dreams keep getting bigger, and your life keep collecting moments that feel even better than these photographs. Happy Birthday from Shahid.</p>
+      </div>
+    </section>
+
+    {% if page_no == 1 %}
+    <section class="story-section glass reveal">
+      <span class="section-kicker">THE BEGINNING</span>
+      <h2>One Snapchat Add. Thousands of Little Moments.</h2>
+      <p>December 2024 was just a date on the calendar, but for us it became the first line of a story. A simple Snapchat add became conversations, jokes, support, random photos and the kind of friendship that quietly becomes important.</p>
+      <div class="timeline"><span>DEC 2024</span><b>•</b><span>FIRST ADD</span><b>•</b><span>BESTIE ERA</span><b>•</b><span>STILL GOING</span></div>
+    </section>
+    {% elif page_no == 2 %}
+    <section class="story-section glass reveal">
+      <span class="section-kicker">THE PERSON BEHIND THE PHOTOS</span>
+      <h2>Beautiful in Pictures, Even Better in Memories.</h2>
+      <p>These are not just photos of Afreen. They are little reminders of different moods, different days and different versions of the same person whose presence became a meaningful part of the story.</p>
+    </section>
+    {% elif page_no == 3 %}
+    <section class="story-section glass reveal">
+      <span class="section-kicker">SHAHID × AFREEN</span>
+      <h2>Two Names. One Friendship. Countless Inside Jokes.</h2>
+      <p>Good friendships are not measured by perfect conversations. They are measured by comfort, honesty, laughter and the ability to turn even a boring day into something memorable.</p>
+    </section>
+    {% elif page_no == 4 %}
+    <section class="story-section glass reveal">
+      <span class="section-kicker">THE LITTLE THINGS</span>
+      <h2>The Moments Nobody Planned Become the Favorites.</h2>
+      <p>Random selfies, mirror clicks, funny expressions and quiet moments can become more valuable than the grandest plans. These are the tiny pieces that make a friendship feel real.</p>
+    </section>
+    {% elif page_no == 5 %}
+    <section class="story-section glass reveal">
+      <span class="section-kicker">A TO Z</span>
+      <h2>A whole alphabet for one unforgettable friendship.</h2>
+      <p>Awesome, Bestie, Caring, Dreamer, Energetic, Forever — six letters here, but the meaning keeps going. Every letter can hold a memory, and every memory can hold a smile.</p>
+    </section>
+    {% elif page_no == 6 %}
+    <section class="letter glass reveal">
+      <div class="letter-icon">♥</div>
+      <span class="section-kicker">A LETTER FROM SHAHID</span>
+      <h2>Happy Birthday, Afreen.</h2>
+      <p>Dear Afreen,<br><br>
+      Today is your day, and I hope you take a moment to realize how many beautiful things are still waiting for you. From a simple Snapchat add in December 2024 to all the memories we have collected since then, I am genuinely thankful that our paths crossed.<br><br>
+      I wish you a year full of peace when life feels difficult, courage when things feel uncertain, success when you chase your dreams, and happiness that does not need a reason. Keep smiling, keep growing, and never lose the version of you that makes you special.<br><br>
+      Thank you for being my bestie, for the random conversations, the funny moments, the memories and all the little things that made this friendship what it is.<br><br>
+      Happy Birthday once again. May this year be beautiful from the first page to the last.<br><br>
+      <b>— Shahid</b></p>
+      <div class="signature">Always cheering for you ♥</div>
+    </section>
+    {% elif page_no == 7 %}
+    <section class="story-section glass reveal">
+      <span class="section-kicker">THE STORY CONTINUES</span>
+      <h2>Not Goodbye. Just “To Be Continued…”</h2>
+      <p>These 41 photos can only hold a fraction of the memories. The real story is in the conversations, laughter, support and moments that never became photographs. Happy Birthday, Afreen — here is to every chapter still waiting for us.</p>
+      <div class="timeline"><span>41 PHOTOS</span><b>♥</b><span>1 FRIENDSHIP</span><b>♥</b><span>∞ MEMORIES</span></div>
+    </section>
+    {% endif %}
+
+    <div class="page-nav">
+      {% if page_no > 1 %}
+        <a class="ghost-btn" href="{{ url_for('page', page_no=page_no-1) }}">← Previous Memory</a>
+      {% else %}
+        <a class="ghost-btn" href="{{ url_for('page', page_no=0) }}">← Home</a>
+      {% endif %}
+      <span>PAGE {{ page_no }} OF 7 • SHAHID × AFREEN</span>
+      {% if page_no < 7 %}
+        <a class="primary-btn" href="{{ url_for('page', page_no=page_no+1) }}">Continue Our Story →</a>
+      {% else %}
+        <a class="primary-btn" href="{{ url_for('page', page_no=0) }}">Back to Home ♥</a>
+      {% endif %}
+    </div>
+  </main>
+</div>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close">×</button>
+  <div class="lightbox-inner">
+    <div class="lightbox-label">SHAHID × AFREEN • MEMORY</div>
+    <img id="lightbox-img" src="" alt="Memory preview">
+    <div class="lightbox-caption">A beautiful moment worth remembering ♥</div>
+  </div>
+</div>
+{% endblock %}
